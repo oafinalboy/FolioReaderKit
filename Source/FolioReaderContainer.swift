@@ -181,9 +181,8 @@ open class FolioReaderContainer: UIViewController {
 
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        if (self.errorOnLoad == true) {
-            self.dismiss()
+        if errorOnLoad {
+            (parent ?? self).dismiss()
         }
     }
 

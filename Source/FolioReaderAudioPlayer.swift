@@ -261,14 +261,12 @@ open class FolioReaderAudioPlayer: NSObject {
      the audio is out of the fragment timeframe.
      */
     @discardableResult fileprivate func _playFragment(_ smil: FRSmilElement?) -> Bool {
-
         guard let smil = smil else {
             // FIXME: What about the log that the library prints in the console? shouldn’t we disable it? use another library for that or some compiler flags?
             print("no more parallel audio to play")
-            self.stop()
+            stopPlayerTimer()
             return false
         }
-
         let textFragment = smil.textElement().attributes["src"]
         let audioFile = smil.audioElement().attributes["src"]
 
@@ -279,13 +277,11 @@ open class FolioReaderAudioPlayer: NSObject {
         if player == nil || (audioFile != nil && audioFile != currentAudioFile) {
 
             currentAudioFile = audioFile
-
             let fileURL = currentSmilFile.resource.basePath() + ("/"+audioFile!)
-            let audioData = try? Data(contentsOf: URL(fileURLWithPath: fileURL))
 
             do {
-
-                player = try AVAudioPlayer(data: audioData!)
+                let audioData = try Data(contentsOf: URL(fileURLWithPath: fileURL))
+                player = try AVAudioPlayer(data: audioData)
 
                 guard let player = player else { return false }
 
@@ -296,7 +292,7 @@ open class FolioReaderAudioPlayer: NSObject {
 
                 updateNowPlayingInfo()
             } catch {
-                print("could not read audio file:", audioFile ?? "nil")
+                print("could not read audio file:", audioFile ?? "nil", error.localizedDescription)
                 return false
             }
         }
@@ -327,10 +323,9 @@ open class FolioReaderAudioPlayer: NSObject {
      Gets the next audio fragment in the current smil file, or moves on to the next smil file
      */
     fileprivate func nextAudioFragment() -> FRSmilElement? {
-
-        guard let smilFile = book.smilFile(forHref: currentHref) else {
-            return nil
-        }
+        guard
+            let href = currentHref,
+            let smilFile = book.smilFile(forHref: href) else { return nil }
 
         let smil = (self.currentFragment == nil ? smilFile.parallelAudioForFragment(nil) : smilFile.nextParallelAudioForFragment(currentFragment))
 
@@ -339,7 +334,7 @@ open class FolioReaderAudioPlayer: NSObject {
             return smil
         }
 
-        self.currentHref = self.book.spine.nextChapter(currentHref)?.href
+        self.currentHref = self.book.spine.nextChapter(href)?.href
         self.currentFragment = nil
         self.currentSmilFile = smilFile
 
