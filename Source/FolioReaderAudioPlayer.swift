@@ -68,6 +68,7 @@ open class FolioReaderAudioPlayer: NSObject {
     }
 
     deinit {
+        stopPlayerTimer()
         UIApplication.shared.endReceivingRemoteControlEvents()
     }
 
@@ -423,6 +424,7 @@ open class FolioReaderAudioPlayer: NSObject {
     // MARK: - Audio timing events
 
     fileprivate func startPlayerTimer() {
+        stopPlayerTimer()
         // we must add the timer in this mode in order for it to continue working even when the user is scrolling a webview
         playingTimer = Timer(timeInterval: 0.01, target: self, selector: #selector(playerTimerObserver), userInfo: nil, repeats: true)
         RunLoop.current.add(playingTimer, forMode: RunLoop.Mode.common)
