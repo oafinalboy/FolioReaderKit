@@ -16,14 +16,6 @@ target 'Example' do
   shared_pods
 end
 
-target 'Storyboard-Example' do
-	shared_pods
-end
-
-target 'MultipleInstance-Example' do
-    shared_pods
-end
-
 target 'FolioReaderTests' do
   shared_pods
   testing_pods
