@@ -112,6 +112,8 @@
 		B0D69CD21D0388EF003B4CCD /* FontBlaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D69CCC1D0388EF003B4CCD /* FontBlaster.framework */; };
 		B0D69CD51D0388EF003B4CCD /* ZFDragableModalTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D69CCF1D0388EF003B4CCD /* ZFDragableModalTransition.framework */; };
 		B0D69CD61D0388EF003B4CCD /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D69CD01D0388EF003B4CCD /* ZipArchive.framework */; };
+		CECFBF8A2568050000F9EAA2 /* FolioReaderScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFBF892568050000F9EAA2 /* FolioReaderScript.swift */; };
+		CECFBF8B2568050000F9EAA2 /* FolioReaderScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFBF892568050000F9EAA2 /* FolioReaderScript.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -196,6 +198,7 @@
 		B0D69CCD1D0388EF003B4CCD /* JSQWebViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSQWebViewController.framework; path = Carthage/Build/iOS/JSQWebViewController.framework; sourceTree = "<group>"; };
 		B0D69CCF1D0388EF003B4CCD /* ZFDragableModalTransition.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZFDragableModalTransition.framework; path = Carthage/Build/iOS/ZFDragableModalTransition.framework; sourceTree = "<group>"; };
 		B0D69CD01D0388EF003B4CCD /* ZipArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZipArchive.framework; path = Carthage/Build/iOS/ZipArchive.framework; sourceTree = "<group>"; };
+		CECFBF892568050000F9EAA2 /* FolioReaderScript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolioReaderScript.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +261,7 @@
 				1A958F1A1D397BE900D56699 /* FolioReaderPageIndicator.swift */,
 				1A958F1B1D397BE900D56699 /* FolioReaderPlayerMenu.swift */,
 				1A65DDD61DA7450A0033C277 /* FolioReaderQuoteShare.swift */,
+				CECFBF892568050000F9EAA2 /* FolioReaderScript.swift */,
 				1A958F1C1D397BE900D56699 /* FolioReaderSharingProvider.swift */,
 				3A27F08A1FD9BE5800D84A57 /* FolioReaderUserDefaults.swift */,
 				3AD5EEB81D9433C100E42810 /* FolioReaderWebView.swift */,
@@ -517,6 +521,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = B0D699011D035FA1003B4CCD;
@@ -572,6 +577,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CECFBF8A2568050000F9EAA2 /* FolioReaderScript.swift in Sources */,
 				1A958FA11D397BE900D56699 /* FolioReaderFontsMenu.swift in Sources */,
 				1A958F9F1D397BE900D56699 /* FolioReaderConfig.swift in Sources */,
 				1A958FA51D397BE900D56699 /* FolioReaderPage.swift in Sources */,
@@ -650,6 +656,7 @@
 				3A27F0C31FD9C25C00D84A57 /* QuoteImage.swift in Sources */,
 				3A27F0B71FD9C25500D84A57 /* FolioReaderHighlightList.swift in Sources */,
 				3A27F09E1FD9C24A00D84A57 /* FREpubParser.swift in Sources */,
+				CECFBF8B2568050000F9EAA2 /* FolioReaderScript.swift in Sources */,
 				1AC255D32202193700841FA2 /* SMSegment.swift in Sources */,
 				3A27F0A21FD9C24A00D84A57 /* FRResources.swift in Sources */,
 			);

@@ -8,29 +8,23 @@
 
 import WebKit
 
-class FolioReaderScript: WKUserScript {
-    
-    init(source: String) {
-        super.init(source: source,
-                   injectionTime: .atDocumentEnd,
-                   forMainFrameOnly: true)
-    }
-    
-    static let bridgeJS: FolioReaderScript = {
+class FolioReaderScript {
+        
+    static func bridgeJS() -> WKUserScript {
         let jsURL = Bundle.frameworkBundle().url(forResource: "Bridge", withExtension: "js")!
         let jsSource = try! String(contentsOf: jsURL)
-        return FolioReaderScript(source: jsSource)
-    }()
+        return WKUserScript(source: jsSource, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+    }
     
-    static let cssInjection: FolioReaderScript = {
+    static func cssInjection() -> WKUserScript {
         let cssURL = Bundle.frameworkBundle().url(forResource: "Style", withExtension: "css")!
         let cssString = try! String(contentsOf: cssURL)
-        return FolioReaderScript(source: cssInjectionSource(for: cssString))
-    }()
+        return WKUserScript(source: cssInjectionSource(for: cssString), injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+    }
     
-    static func cssInjection(overflow: String) -> FolioReaderScript {
+    static func cssInjection(overflow: String) -> WKUserScript {
         let cssString = "html{overflow:\(overflow)}"
-        return FolioReaderScript(source: cssInjectionSource(for: cssString))
+        return WKUserScript(source: cssInjectionSource(for: cssString), injectionTime: .atDocumentEnd, forMainFrameOnly: true)
     }
     
     private static func cssInjectionSource(for content: String) -> String {
