@@ -177,7 +177,9 @@ open class FolioReaderPage: UICollectionViewCell, WKNavigationDelegate, UIGestur
                 let range: NSRange = tempHtmlContent.range(of: locator, options: .literal)
                 
                 if range.location != NSNotFound {
-                    let newRange = NSRange(location: range.location + item.contentPre.count, length: item.content.count)
+//                    let newRange = NSRange(location: range.location + item.contentPre.count, length: item.content.count)
+                    let newRange = NSRange(location: range.location + item.contentPre.unicodeScalars.count, length: item.content.unicodeScalars.count) /// Oa Fixed highlight for multilanguage
+
                     tempHtmlContent = tempHtmlContent.replacingCharacters(in: newRange, with: tag) as NSString
                 } else {
                     print("highlight range not found")

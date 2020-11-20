@@ -360,6 +360,13 @@ open class FolioReaderAudioPlayer: NSObject {
             setRate(self.folioReader.currentAudioRate)
         }
 
+        ///Oa Fixed TTS for auto change multilanguage
+        var language = "en"
+        if #available(iOS 11.0, *) {
+            language = NSLinguisticTagger.dominantLanguage(for: text) ?? "en"
+        }
+        ///=====
+
         let utterance = AVSpeechUtterance(string: text)
         utterance.rate = utteranceRate
         utterance.voice = AVSpeechSynthesisVoice(language: self.book.metadata.language)
