@@ -35,7 +35,7 @@ Pod::Spec.new do |s|
   s.dependency 'ZFDragableModalTransition', '0.6'
   s.dependency 'AEXML', '4.3.3'
   s.dependency 'FontBlaster', '4.1.0'
-  s.dependency 'RealmSwift', '10.21.1'
+  s.dependency 'RealmSwift', '10.25.0'
 
 
 end
